@@ -1,0 +1,53 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
+  "bundledPackages": [],
+  "apiReport": {
+    "enabled": true,
+    "reportFolder": "api-reports",
+    "reportTempFolder": "<projectFolder>/temp-report/",
+    "includeForgottenExports": true
+  },
+  "compiler": {
+    "overrideTsconfig": {
+      "extends": "./tsconfig.lib.json",
+      "compilerOptions": {
+        "paths": {
+          "@myorg/packageA": ["dist/packages/package-a/src/index.d.ts"],
+          "@myorg/packageB": ["dist/packages/package-b/src/index.d.ts"]
+        }
+      }
+    }
+  },
+  "docModel": {
+    "enabled": false
+  },
+  "dtsRollup": {
+    "enabled": false
+  },
+  "tsdocMetadata": {
+    "enabled": false
+  },
+  "messages": {
+    "compilerMessageReporting": {
+      "default": {
+        "logLevel": "warning"
+      }
+    },
+    "extractorMessageReporting": {
+      "default": {
+        "logLevel": "warning"
+      },
+      "ae-missing-release-tag": {
+        "logLevel": "none"
+      },
+      "ae-unresolved-link": {
+        "logLevel": "none"
+      }
+    },
+    "tsdocMessageReporting": {
+      "default": {
+        "logLevel": "none"
+      }
+    }
+  }
+}

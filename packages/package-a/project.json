@@ -1,0 +1,52 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/package-a/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/package-a",
+        "main": "packages/package-a/src/index.ts",
+        "tsConfig": "packages/package-a/tsconfig.lib.json",
+        "assets": ["packages/package-a/*.md"]
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "node tools/scripts/publish.mjs package-a {args.ver} {args.tag}"
+      },
+      "dependsOn": [
+        {
+          "projects": "self",
+          "target": "build"
+        }
+      ]
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/package-a/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/package-a"],
+      "options": {
+        "jestConfig": "packages/package-a/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "extract-api": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "packages/package-a",
+        "command": "api-extractor run --local"
+      }
+    }
+  },
+  "tags": []
+}

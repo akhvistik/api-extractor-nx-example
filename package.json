@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "extract-api": "nx run-many --target=extract-api --all"
+    "build": "nx run-many --target=build --all",
+    "extract-api": "nx run-many --target=extract-api --all",
+    "extract-api-via-script": "nx run-many --target=extract-api-via-script --all"
   },
   "private": true,
   "dependencies": {

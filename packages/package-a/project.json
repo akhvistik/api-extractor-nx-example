@@ -46,6 +46,13 @@
         "cwd": "packages/package-a",
         "command": "api-extractor run --local"
       }
+    },
+    "extract-api-via-script": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "packages/package-a",
+        "command": "node ../../tools/scripts/extract-api.js --buildOutputPath=../../dist/packages/package-a"
+      }
     }
   },
   "tags": []

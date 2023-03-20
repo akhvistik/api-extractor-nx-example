@@ -22,9 +22,6 @@
     },
     "test": {
       "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"]
-    },
-    "extract-api": {
-      "dependsOn": ["build"]
     }
   },
   "namedInputs": {
